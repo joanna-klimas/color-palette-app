@@ -18,11 +18,13 @@ class Home extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <h1>AppName</h1>
-        <h2>Pick a colour:</h2>
-        <div style={this.state}>
+        <h1 className="title">AppName</h1>
+        <h2 className="title is-3">Pick a colour:</h2>
+        <div className="section">
+          <div style={this.state}>
+          </div>
+          <Link to={'/monochrome'}><button className="button is-light">Go!</button></Link>
         </div>
-        <Link to={'/monochrome'}><button>Go!</button></Link>
       </React.Fragment>
     )
   }

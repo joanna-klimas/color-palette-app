@@ -7,11 +7,13 @@ import ContrastPalette from './ContrastPalette';
 
 const App = () => {
   return (
-    <React.Fragment>
-      <Route path='/' component={Home} />
-      <Route path='/monochrome' component={MonochromePalette}/>
-      <Route path='/monochrome/contrast' exact component={ContrastPalette} />
-    </React.Fragment>
+    <div className="container">
+      <div className="box">
+        <Route path='/' component={Home} />
+        <Route path='/monochrome' component={MonochromePalette} />
+        <Route path='/monochrome/contrast' exact component={ContrastPalette} />
+      </div>
+    </div>
   )
 }
 

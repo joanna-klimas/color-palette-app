@@ -8,8 +8,8 @@ class ContrastPalette extends React.Component {
     super()
 
     this.state = {
-      height: 30,
-      width: 60,
+      height: 60,
+      width: 120,
       backgroundColor: this.randomHexColor()
     }
   }
@@ -18,14 +18,15 @@ class ContrastPalette extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
-   
+      <div className="section">
         <h3>contrast:</h3>
-        <Contrast />
-        <Contrast />
-        <Contrast />
-        <Link to={'/'}><button>Try again!</button></Link>
-      </React.Fragment>
+          <div className="columns is-gapless">
+            <div className="column"><Contrast /></div>
+            <div className="column"><Contrast /></div>
+            <div className="column"><Contrast /></div>
+          </div>
+        <Link to={'/'}><button className="button is-light">Try again!</button></Link>
+      </div>
     )
   }
 }

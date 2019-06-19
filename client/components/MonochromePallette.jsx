@@ -18,14 +18,15 @@ class MonochromePalette extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
-   
+      <div className="section">
         <h3>monochrome:</h3>
-        <Monochrome />
-        <Monochrome />
-        <Monochrome />
-        <Link to={'monochrome/contrast'}><button>More?</button></Link>
-      </React.Fragment>
+        <div className="columns is-gapless">
+          <div className="column"><Monochrome /></div>
+          <div className="column"><Monochrome /></div>
+          <div className="column"><Monochrome /></div>
+        </div>
+        <Link to={'monochrome/contrast'}><button className="button is-light">More?</button></Link>
+      </div>
     )
   }
 }
