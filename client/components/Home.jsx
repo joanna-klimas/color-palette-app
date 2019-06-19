@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 class Home extends React.Component {
   constructor() {
@@ -21,7 +22,8 @@ class Home extends React.Component {
         <h2>Pick a colour:</h2>
         <div style={this.state}>
         </div>
-        <button>Go!</button>
+        <Link to={'/monochrome'}><button>Go!</button></Link>
+        <Link to={'/monochrome'}><button>More?</button></Link>
       </React.Fragment>
     )
   }

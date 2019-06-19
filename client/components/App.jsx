@@ -2,13 +2,13 @@ import React from 'react'
 import { Route } from 'react-router-dom'
 
 import Home from './Home'
-import BaseColor from './BaseColor'
+import MonochromePalette from './MonochromePallette';
 
 const App = () => {
   return (
     <React.Fragment>
-      <Route path="/" exact component={Home} />
-      {/* <BaseColor /> */}
+      <Route path='/' component={Home} />
+      <Route path='/monochrome' component={MonochromePalette}/>
     </React.Fragment>
   )
 }

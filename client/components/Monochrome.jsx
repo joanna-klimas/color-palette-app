@@ -1,6 +1,6 @@
 import React from 'react'
 
-class MonochromePalette extends React.Component {
+class Monochrome extends React.Component {
   constructor() {
     super()
     this.state = {
@@ -23,4 +23,4 @@ class MonochromePalette extends React.Component {
   }
 }
 
-export default MonochromePalette
+export default Monochrome

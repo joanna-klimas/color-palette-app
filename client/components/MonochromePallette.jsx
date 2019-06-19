@@ -1,8 +1,7 @@
 import React from 'react'
-import MonochromePalette from './MonochromePalette'
-import ContrastPalette from './ContrastPalette'
+import Monochrome from './Monochrome'
 
-class BaseColor extends React.Component {
+class MonochromePalette extends React.Component {
   constructor() {
     super()
 
@@ -20,16 +19,12 @@ class BaseColor extends React.Component {
       <React.Fragment>
    
         <h3>monochrome:</h3>
-        <MonochromePalette />
-        <MonochromePalette />
-        <MonochromePalette />
-        <h3>contrast:</h3>
-        <ContrastPalette />
-        <ContrastPalette />
-        <ContrastPalette />
+        <Monochrome />
+        <Monochrome />
+        <Monochrome />
       </React.Fragment>
     )
   }
 }
 
-export default BaseColor
+export default MonochromePalette
