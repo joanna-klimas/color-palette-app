@@ -1,10 +1,8 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 
-class Home extends React.Component {
+class Contrast extends React.Component {
   constructor() {
     super()
-
     this.state = {
       height: 30,
       width: 60,
@@ -18,15 +16,11 @@ class Home extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <h1>AppName</h1>
-        <h2>Pick a colour:</h2>
         <div style={this.state}>
         </div>
-        <Link to={'/monochrome'}><button>Go!</button></Link>
-        <Link to={'/contrast'}><button>More?</button></Link>
       </React.Fragment>
     )
   }
 }
 
-export default Home
+export default Contrast
