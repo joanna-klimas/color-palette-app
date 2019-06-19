@@ -10,7 +10,7 @@ const App = () => {
     <React.Fragment>
       <Route path='/' component={Home} />
       <Route path='/monochrome' component={MonochromePalette}/>
-      <Route path='/contrast' exact component={ContrastPalette} />
+      <Route path='/monochrome/contrast' exact component={ContrastPalette} />
     </React.Fragment>
   )
 }

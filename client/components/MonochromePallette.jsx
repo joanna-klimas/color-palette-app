@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
 import Monochrome from './Monochrome'
 
 class MonochromePalette extends React.Component {
@@ -22,6 +24,7 @@ class MonochromePalette extends React.Component {
         <Monochrome />
         <Monochrome />
         <Monochrome />
+        <Link to={'monochrome/contrast'}><button>More?</button></Link>
       </React.Fragment>
     )
   }

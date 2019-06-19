@@ -23,7 +23,6 @@ class Home extends React.Component {
         <div style={this.state}>
         </div>
         <Link to={'/monochrome'}><button>Go!</button></Link>
-        <Link to={'/contrast'}><button>More?</button></Link>
       </React.Fragment>
     )
   }

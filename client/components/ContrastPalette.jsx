@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
 import Contrast from './Contrast'
 
 class ContrastPalette extends React.Component {
@@ -22,6 +24,7 @@ class ContrastPalette extends React.Component {
         <Contrast />
         <Contrast />
         <Contrast />
+        <Link to={'/'}><button>Try again!</button></Link>
       </React.Fragment>
     )
   }
