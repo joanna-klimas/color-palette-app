@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import Monochrome from './Monochrome'
 
 class MonochromePalette extends React.Component {
-  constructor() {
+  constructor () {
     super()
 
     this.state = {
@@ -16,7 +16,7 @@ class MonochromePalette extends React.Component {
   randomHexColor = () =>
     `#${Math.floor(Math.random() * 0x1000000).toString(16).padStart(6, 0)}`
 
-  render() {
+  render () {
     return (
       <div className="section">
         <h3>monochrome:</h3>

@@ -1,7 +1,7 @@
 import React from 'react'
 
 class Monochrome extends React.Component {
-  constructor() {
+  constructor () {
     super()
     this.state = {
       height: 30,
@@ -13,7 +13,7 @@ class Monochrome extends React.Component {
   randomHexColor = () =>
     `#${Math.floor(Math.random() * 0x1000000).toString(16).padStart(6, 0)}`
 
-  render() {
+  render () {
     return (
       <React.Fragment>
         <div style={this.state}>
