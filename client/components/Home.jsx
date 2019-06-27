@@ -1,7 +1,5 @@
 import React from 'react'
-// import { Link } from 'react-router-dom'
-
-import MonochromePalette from './MonochromePalette'
+import { Link } from 'react-router-dom'
 
 class Home extends React.Component {
   constructor () {
@@ -28,16 +26,7 @@ class Home extends React.Component {
       <React.Fragment>
         <div className="box">
 
-          <div className="columns">
-            <div className="column is-one-fifth">
-              <h1 className="title is-1">Unicorn</h1>
-            </div>
-            <div className="column is-one-fifth">
-              <img style={{ height: 80 }} src='/unicorn.jpg'></img>
-            </div>
-            <div className="column">
-            </div>
-          </div>
+          <h1 className="title is-1">AppName</h1>
           <h2 className="title is-3">Pick a colour:</h2>
 
           <div className="columns">
@@ -65,10 +54,6 @@ class Home extends React.Component {
 
           </div>
           <div style={this.state}>
-          </div>
-
-          <div className="column">
-            <MonochromePalette chosenColor={this.state.backgroundColor}/>
           </div>
 
         </div>

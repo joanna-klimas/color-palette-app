@@ -1,15 +1,17 @@
 import React from 'react'
 
 class Monochrome extends React.Component {
-  constructor (props) {
-    super(props)
+  constructor () {
+    super()
     this.state = {
       height: 30,
       width: 60,
-      backgroundColor: 'transparent'
+      backgroundColor: this.randomHexColor()
     }
-    //console.log(props)
   }
+
+  randomHexColor = () =>
+    `#${Math.floor(Math.random() * 0x1000000).toString(16).padStart(6, 0)}`
 
   render () {
     return (
