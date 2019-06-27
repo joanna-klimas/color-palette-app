@@ -2,7 +2,7 @@ import React from 'react'
 // import { Link } from 'react-router-dom'
 
 import Monochrome from './Monochrome'
-//import { newMonochromePalette } from '../api'
+import { newMonochromePalette } from '../api'
 
 class MonochromePalette extends React.Component {
   constructor (props) {
