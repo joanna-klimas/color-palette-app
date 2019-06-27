@@ -16,26 +16,28 @@ class MonochromePalette extends React.Component {
     // console.log(props)
   }
 
-  handleClick = (e) => {
-    e.preventDefault()
-    // that method takes results of calling an api, passes value of the colours as props to componenets below.
-    // Compoments take that value and change state based on it
-    newMonochromePalette()
-      .then(data => {
-        console.log(data)
-        // return
-        // const monochromePalette = {
-        //   color1: 'something',
-        //   color2: 'something',
-        //   color3: 'something'
-        // }
-      })
-  }
+  // handleClick = (e) => {
+  //   e.preventDefault()
+  //   // that method takes results of calling an api, passes value of the colours as props to componenets below.
+  //   // Compoments take that value and change state based on it
+  //   newMonochromePalette()
+  //     .then(data => {
+  //       console.log(data)
+  //       return
+  //       const monochromePalette = {
+  //         color1: 'something',
+  //         color2: 'something',
+  //         color3: 'something'
+  //       }
+  //     })
+  // }
 
   render () {
     return (
       <div className="section">
-        <button onClick={this.handleClick} className="button is-light is-medium is-warning">Monochrome palette</button>
+        <button 
+       // onClick={this.handleClick} 
+        className="button is-light is-medium is-warning">Monochrome palette</button>
         <div className="columns is-gapless">
           <div className="column"><Monochrome chosenColor={this.props.chosenColor}/></div>
           <div className="column"><Monochrome chosenColor={this.props.chosenColor}/></div>
