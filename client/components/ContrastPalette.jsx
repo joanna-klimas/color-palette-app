@@ -11,7 +11,10 @@ class ContrastPalette extends React.Component {
       width: 120,
       backgroundColor: this.randomHexColor()
     }
+    console.log(props)
   }
+
+  
 
     randomHexColor = () =>
       `#${Math.floor(Math.random() * 0x1000000).toString(16).padStart(6, 0)}`
@@ -21,11 +24,11 @@ class ContrastPalette extends React.Component {
         <div className="section">
           <h3>contrast:</h3>
           <div className="columns is-gapless">
-            <div className="column"><Contrast /></div>
+            <div className="column"><Contrast chosenColor={this.props.chosenColor}/></div>
             <div className="column"><Contrast /></div>
             <div className="column"><Contrast /></div>
           </div>
-          <Link to={'/'}><button className="button is-light">Try again!</button></Link>
+          {/* <Link to={'/'}><button className="button is-light">Try again!</button></Link> */}
         </div>
       )
     }
