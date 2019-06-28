@@ -1,22 +1,12 @@
 const path = require('path')
 const express = require('express')
+const cors = require ('cors')
 
 const server = express()
+const router = require('./serverApi')
 
-const api = require('../client/api')
-
-server.use(express.json())
+server.use(cors())
 server.use(express.static(path.join(__dirname, './public')))
-
-server.get('/api', (req, res) => {
-  api.newMonochromePalette ()
-    .then(data => {
-      console.log(data)
-      res.send(data)
-    })
-    .catch(err => {
-      res.status(500).send(err.message)
-    })
-})
+server.use('/', router)
 
 module.exports = server

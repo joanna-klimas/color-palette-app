@@ -8,7 +8,7 @@ class Contrast extends React.Component {
       width: 60,
       backgroundColor: props.chosenColor
     }
-    console.log(props)
+    //console.log(props)
   }
 
   // randomHexColor = () =>
