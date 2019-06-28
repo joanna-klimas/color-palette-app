@@ -10,7 +10,6 @@ router.get('/api', (req, res) => {
     .get(monochromeUrl)
     .then(apiRes => {
       const data = JSON.parse(apiRes.text)
-      //console.log(data.colors)
       const colors = {
         colorOne: data.colors[0].hex.value,
         colorTwo: data.colors[1].hex.value,
