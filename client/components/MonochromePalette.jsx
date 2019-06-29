@@ -17,7 +17,7 @@ export default class MonochromePalette extends React.Component {
       colorThree: null
     }
 
-  //  console.log(props)
+    console.log(props)
   }
 
   callbackFn = (err, data) => {
@@ -35,6 +35,7 @@ export default class MonochromePalette extends React.Component {
 
   componentDidMount() {
     getMono(this.callbackFn)
+    //  console.log(this.state)
   }
 
   render() {
@@ -42,9 +43,9 @@ export default class MonochromePalette extends React.Component {
       <div className="section">
         <button className="button is-light is-medium is-warning">Monochrome palette</button>
         <div className="columns is-gapless">
-          <div className="column"><Monochrome chosenColor={this.props.chosenColor} nextColor={this.state.colorOne}/></div>
-          <div className="column"><Monochrome chosenColor={this.props.chosenColor} nextColor={this.state.colorTwo}/></div>
-          <div className="column"><Monochrome chosenColor={this.props.chosenColor} nextColor={this.state.colorThree}/></div>
+          <div className="column"><Monochrome chosenColor={this.props.chosenColor} nextColor={this.state.colorOne} /></div>
+          <div className="column"><Monochrome chosenColor={this.props.chosenColor} nextColor={this.state.colorTwo} /></div>
+          <div className="column"><Monochrome chosenColor={this.props.chosenColor} nextColor={this.state.colorThree} /></div>
         </div>
       </div>
     )

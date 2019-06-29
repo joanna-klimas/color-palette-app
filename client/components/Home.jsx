@@ -70,7 +70,7 @@ class Home extends React.Component {
           <div className="column">
             <MonochromePalette chosenColor={this.state.backgroundColor}/>
           </div>
-
+          
         </div>
       </React.Fragment>
     )

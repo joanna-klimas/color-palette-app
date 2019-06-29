@@ -11,12 +11,14 @@ class Monochrome extends React.Component {
     console.log(props)
   }
 
-  // componentDidUpdate(prevProps) {
-  //   // Typical usage (don't forget to compare props):
-  //   if (this.props.userID !== prevProps.userID) {
-  //     this.fetchData(this.props.userID);
-  //   }
-  // }
+  componentDidUpdate(prevProps) {
+    // Typical usage (don't forget to compare props):
+    if (this.props !== prevProps) {
+      this.setState({
+        backgroundColor: this.props.nextColor
+      })
+    }
+  }
 
   render () {
     return (
