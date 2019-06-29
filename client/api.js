@@ -17,3 +17,12 @@ export function getComplement (callback, colorCode) {
       if (err) console.log(err)
     })
 }
+
+export function getTriad (callback, colorCode) {
+  return request
+  .get(`http://localhost:3000/triad/${colorCode}`)
+  .end((err, res) => {
+    callback (err, res)
+    if (err) console.log(err)
+  })
+}

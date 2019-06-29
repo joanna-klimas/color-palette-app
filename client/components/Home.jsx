@@ -2,6 +2,7 @@ import React from 'react'
 
 import MonochromePalette from './MonochromePalette'
 import ComplementPalette from './ComplementPalette'
+import TriadPalette from './TriadPalette'
 
 class Home extends React.Component {
   constructor() {
@@ -69,7 +70,7 @@ class Home extends React.Component {
 
           <h3 className="title is-4">triad</h3>
           <div className="box" style={this.state}>
-            <MonochromePalette chosenColor={this.state.backgroundColor} />
+            <TriadPalette chosenColor={this.state.backgroundColor} />
           </div>
 
         </div>
