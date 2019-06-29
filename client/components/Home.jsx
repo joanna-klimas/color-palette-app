@@ -1,5 +1,4 @@
 import React from 'react'
-// import { Link } from 'react-router-dom'
 
 import MonochromePalette from './MonochromePalette'
 
@@ -28,7 +27,7 @@ class Home extends React.Component {
     return (
       <React.Fragment>
         <div className="box">
-          <div style= {{display: 'inline-flex'}}>
+          <div style={{ display: 'inline-flex' }}>
             <img style={{ height: 80 }} src='/unicorn-01_300x.png'></img>
             <h1 className="title is-1">Unicorn</h1>
           </div>
@@ -57,9 +56,20 @@ class Home extends React.Component {
             </form>
 
           </div>
-          <div style={this.state}>
+          <h4 className="title is-4">monochrome</h4>
+          <div className="box" style={this.state}>
+            <MonochromePalette chosenColor={this.state.backgroundColor} />
           </div>
-          <MonochromePalette chosenColor={this.state.backgroundColor} />
+
+          <h3 className="title is-4">complement</h3>
+          <div className="box" style={this.state}>
+            <MonochromePalette chosenColor={this.state.backgroundColor} />
+          </div>
+
+          <h3 className="title is-4">triad</h3>
+          <div className="box" style={this.state}>
+            <MonochromePalette chosenColor={this.state.backgroundColor} />
+          </div>
 
         </div>
       </React.Fragment>

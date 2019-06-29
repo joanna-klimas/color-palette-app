@@ -8,8 +8,8 @@ export default class MonochromePalette extends React.Component {
     super(props)
     this.state = {
       style: {
-        height: 30,
-        width: 60,
+        height: '60px',
+        width: '60px',
         backgroundColor: this.props.chosenColor
       },
       colorOne: null,
