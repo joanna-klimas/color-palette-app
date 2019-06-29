@@ -4,7 +4,7 @@ import React from 'react'
 import MonochromePalette from './MonochromePalette'
 
 class Home extends React.Component {
-  constructor () {
+  constructor() {
     super()
 
     this.state = {
@@ -21,35 +21,28 @@ class Home extends React.Component {
     this.setState({
       backgroundColor: this.randomHexColor()
     })
+    event.preventDefault()
   }
 
-  render () {
+  render() {
     return (
       <React.Fragment>
         <div className="box">
-
-          <div className="columns">
-            <div className="column is-one-fifth">
-              <h1 className="title is-1">Unicorn</h1>
-            </div>
-            <div className="column is-one-fifth">
-              <img style={{ height: 80 }} src='/unicorn.jpg'></img>
-            </div>
-            <div className="column">
-            </div>
+          <div style= {{display: 'inline-flex'}}>
+            <img style={{ height: 80 }} src='/unicorn-01_300x.png'></img>
+            <h1 className="title is-1">Unicorn</h1>
           </div>
           <h2 className="title is-3">Pick a colour:</h2>
-
           <div className="columns">
-
             <form>
               <div className="column is-three-quarters">
-                <input
+                <input id="aska"
+                  ref={this.textInput}
                   className="input"
                   type="text"
                   placeholder={this.state.backgroundColor}
                   name="userColor"
-                  onChange = {(e) => {
+                  onChange={(e) => {
                     const chosenColor = e.target.value
                     e.preventDefault()
                     this.setState({
@@ -66,11 +59,8 @@ class Home extends React.Component {
           </div>
           <div style={this.state}>
           </div>
+          <MonochromePalette chosenColor={this.state.backgroundColor} />
 
-          <div className="column">
-            <MonochromePalette chosenColor={this.state.backgroundColor}/>
-          </div>
-          
         </div>
       </React.Fragment>
     )

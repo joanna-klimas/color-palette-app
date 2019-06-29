@@ -41,12 +41,10 @@ export default class MonochromePalette extends React.Component {
   render() {
     return (
       <div className="section">
-        <button className="button is-light is-medium is-warning">Monochrome palette</button>
-        <div className="columns is-gapless">
+        {/* <button className="button is-light is-medium is-warning">Monochrome palette</button> */}
           <div className="column"><Monochrome chosenColor={this.props.chosenColor} nextColor={this.state.colorOne} /></div>
           <div className="column"><Monochrome chosenColor={this.props.chosenColor} nextColor={this.state.colorTwo} /></div>
           <div className="column"><Monochrome chosenColor={this.props.chosenColor} nextColor={this.state.colorThree} /></div>
-        </div>
       </div>
     )
   }

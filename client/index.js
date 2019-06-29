@@ -9,3 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('app')
   )
 })
+
+const color = document.getElementById('aska')
+console.log(color)
