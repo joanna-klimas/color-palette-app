@@ -4,16 +4,20 @@ class Contrast extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      height: 30,
+      height: 60,
       width: 60,
-      backgroundColor: props.chosenColor
+      backgroundColor: 'transparent'
     }
-    //console.log(props)
   }
 
-  // randomHexColor = () =>
-  //   `#${Math.floor(Math.random() * 0x1000000).toString(16).padStart(6, 0)}`
-
+  componentDidUpdate(prevProps) {
+    if (this.props !== prevProps) {
+      this.setState({
+        backgroundColor: this.props.nextColor
+      })
+    }
+  }
+  
   render () {
     return (
       <React.Fragment>

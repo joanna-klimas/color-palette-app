@@ -4,11 +4,10 @@ class Monochrome extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      height: 30,
+      height: 60,
       width: 60,
       backgroundColor: 'transparent'
     }
-    console.log(props)
   }
 
   componentDidUpdate(prevProps) {
