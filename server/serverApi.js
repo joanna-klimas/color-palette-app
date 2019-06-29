@@ -2,7 +2,6 @@ const express = require('express')
 const request = require('superagent')
 
 const router = express.Router()
-const userColor = require('../client/components/Home')
 
 const monochromeUrl = 'http://thecolorapi.com/scheme?hex=0047AB&format=json&mode=monochrome&count=3'
 
