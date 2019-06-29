@@ -12,7 +12,6 @@ class Monochrome extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    // Typical usage (don't forget to compare props):
     if (this.props !== prevProps) {
       this.setState({
         backgroundColor: this.props.nextColor
