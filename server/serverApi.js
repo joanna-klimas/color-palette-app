@@ -3,9 +3,12 @@ const request = require('superagent')
 
 const router = express.Router()
 
-const monochromeUrl = 'http://thecolorapi.com/scheme?hex=0047AB&format=json&mode=monochrome&count=3'
-
-router.get('/api', (req, res) => {
+router.get('/api/:colorCode', (req, res) => {
+  let color = req.params.colorCode
+  const monochromeUrl = `http://thecolorapi.com/scheme?hex=${color}&format=json&mode=monochrome&count=3`
+  const complementUrl = `http://thecolorapi.com/scheme?hex=${color}&format=json&mode=complement&count=3`
+  const triadUrl = `http://thecolorapi.com/scheme?hex=${color}&format=json&mode=triad&count=3`
+ 
   request
     .get(monochromeUrl)
     .then(apiRes => {

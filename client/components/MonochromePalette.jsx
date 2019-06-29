@@ -34,8 +34,8 @@ export default class MonochromePalette extends React.Component {
   }
 
   componentDidMount() {
-    getMono(this.callbackFn)
-    //  console.log(this.state)
+    getMono(this.callbackFn, this.props.chosenColor.slice(1))
+   // console.log(this.state)
   }
 
   render() {

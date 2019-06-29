@@ -57,6 +57,9 @@ class Home extends React.Component {
 
           </div>
           <h4 className="title is-4">monochrome</h4>
+          {/* <a href={`http://localhost:3000/api/${this.state.backgroundColor.slice(1)}`}>
+          <button>Button!</button> */}
+          {/* </a> */}
           <div className="box" style={this.state}>
             <MonochromePalette chosenColor={this.state.backgroundColor} />
           </div>
