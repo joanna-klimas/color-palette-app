@@ -9,8 +9,8 @@ class Home extends React.Component {
     super()
 
     this.state = {
-      height: '500px',
-      width: '500px',
+      height: '350px',
+      width: '350px',
       backgroundColor: this.randomHexColor()
     }
   }
@@ -31,14 +31,15 @@ class Home extends React.Component {
         <div className="box">
           <div style={{ display: 'inline-flex' }}>
             <img style={{ height: 80 }} src='/unicorn-01_300x.png'></img>
-            <h1 className="title is-1">Unicorn</h1>
+            <h1 className="title is-1">unicorn</h1>
           </div>
-          <h2 className="title is-3">Pick a colour:</h2>
           <div className="columns">
-            <form>
-              <div className="column is-three-quarters">
-                <input id="aska"
-                  ref={this.textInput}
+            <div className="column is-one-fifth">
+              <h2 className="title is-3">pick a colour:</h2>
+            </div>
+            <div className="column is-one-fifth">
+              <form>
+                <input
                   className="input"
                   type="text"
                   placeholder={this.state.backgroundColor}
@@ -51,26 +52,55 @@ class Home extends React.Component {
                     })
                   }}>
                 </input>
+              </form>
+            </div>
+          </div>
+
+          <button style={{ marginBottom: '2em' }} onClick={this.changeRandomColor} className="button is-light is-medium is-warning">feeling lucky?</button>
+
+          {/* 
+          <div className="tabs is-toggle">
+            <ul>
+              <li className="is-active">
+                <a>
+                  <span className="icon is-small"><i className="fas fa-image" aria-hidden="true"></i></span>
+                  <h4 className="title is-4">monochrome</h4>
+                </a>
+              </li>
+              <li>
+                <a>
+                  <span className="icon is-small"><i className="fas fa-music" aria-hidden="true"></i></span>
+                  <h4 className="title is-4">complement</h4>
+                </a>
+              </li>
+              <li>
+                <a>
+                  <span className="icon is-small"><i className="fas fa-film" aria-hidden="true"></i></span>
+                  <h4 className="title is-4">triad</h4>
+                </a>
+              </li>
+            </ul>
+          </div> */}
+          <div className="columns">
+            <div className="column">
+              <h4 className="title is-4">monochrome</h4>
+              <div style={this.state}>
+                <MonochromePalette chosenColor={this.state.backgroundColor} />
               </div>
-              <div className="column">
-                <button onClick={this.changeRandomColor} className="button is-light is-medium is-warning">Feeling lucky?</button>
+            </div>
+            <div className="column">
+              <h3 className="title is-4">complement</h3>
+              <div style={this.state}>
+                <ComplementPalette chosenColor={this.state.backgroundColor} />
               </div>
-            </form>
+            </div>
 
-          </div>
-          <h4 className="title is-4">monochrome</h4>
-          <div className="box" style={this.state}>
-            <MonochromePalette chosenColor={this.state.backgroundColor} />
-          </div>
-
-          <h3 className="title is-4">complement</h3>
-          <div className="box" style={this.state}>
-            <ComplementPalette chosenColor={this.state.backgroundColor} />
-          </div>
-
-          <h3 className="title is-4">triad</h3>
-          <div className="box" style={this.state}>
-            <TriadPalette chosenColor={this.state.backgroundColor} />
+            <div className="column">
+              <h3 className="title is-4">triad</h3>
+              <div style={this.state}>
+                <TriadPalette chosenColor={this.state.backgroundColor} />
+              </div>
+            </div>
           </div>
 
         </div>
