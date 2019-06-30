@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Complement from './Complement'
+import ColorSquare from './ColorSquare'
 import { getComplement } from '../api'
 
 export default class ContrastPalette extends React.Component {
@@ -38,9 +38,9 @@ export default class ContrastPalette extends React.Component {
   render() {
     return (
         <div className="section">
-          <div className="column"><Complement chosenColor={this.props.chosenColor} nextColor={this.state.colorOne} /></div>
-          <div className="column"><Complement chosenColor={this.props.chosenColor} nextColor={this.state.colorTwo} /></div>
-          <div className="column"><Complement chosenColor={this.props.chosenColor} nextColor={this.state.colorThree} /></div>
+          <div className="column"><ColorSquare chosenColor={this.props.chosenColor} nextColor={this.state.colorOne} /></div>
+          <div className="column"><ColorSquare chosenColor={this.props.chosenColor} nextColor={this.state.colorTwo} /></div>
+          <div className="column"><ColorSquare chosenColor={this.props.chosenColor} nextColor={this.state.colorThree} /></div>
         </div>
     )
   }

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Monochrome from './Monochrome'
+import ColorSquare from './ColorSquare'
 import { getMono } from '../api'
 
 export default class MonochromePalette extends React.Component {
@@ -38,9 +38,9 @@ export default class MonochromePalette extends React.Component {
   render() {
     return (
       <div className="section">
-          <div className="column"><Monochrome chosenColor={this.props.chosenColor} nextColor={this.state.colorOne} /></div>
-          <div className="column"><Monochrome chosenColor={this.props.chosenColor} nextColor={this.state.colorTwo} /></div>
-          <div className="column"><Monochrome chosenColor={this.props.chosenColor} nextColor={this.state.colorThree} /></div>
+          <div className="column"> <ColorSquare chosenColor={this.props.chosenColor} nextColor={this.state.colorOne} /></div>
+          <div className="column"> <ColorSquare chosenColor={this.props.chosenColor} nextColor={this.state.colorTwo} /></div>
+          <div className="column"> <ColorSquare chosenColor={this.props.chosenColor} nextColor={this.state.colorThree} /></div>
       </div>
     )
   }
