@@ -14,7 +14,8 @@ export default class MonochromePalette extends React.Component {
       },
       colorOne: null,
       colorTwo: null,
-      colorThree: null
+      colorThree: null,
+      isVisible: 'details-visible'
     }
   }
 

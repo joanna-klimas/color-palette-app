@@ -25,6 +25,10 @@ class Home extends React.Component {
     event.preventDefault()
   }
 
+  handleTabClick = (e) => {
+
+  }
+
   render () {
     return (
       <React.Fragment>
@@ -54,50 +58,40 @@ class Home extends React.Component {
                 </input>
               </form>
             </div>
+            <div className="column is-one-fifth">
+              <a className="button is-medium is-warning">
+                <span className="icon is-medium">
+                  <i className="fas fa-sync-alt"></i>
+                </span>
+              </a>
+            </div>
           </div>
 
           <button style={{ marginBottom: '2em' }} onClick={this.changeRandomColor} className="button is-light is-medium is-warning">feeling lucky?</button>
 
-          {/*
-          <div className="tabs is-toggle">
+          <div className="tabs is-medium">
             <ul>
-              <li className="is-active">
-                <a>
-                  <span className="icon is-small"><i className="fas fa-image" aria-hidden="true"></i></span>
-                  <h4 className="title is-4">monochrome</h4>
-                </a>
-              </li>
-              <li>
-                <a>
-                  <span className="icon is-small"><i className="fas fa-music" aria-hidden="true"></i></span>
-                  <h4 className="title is-4">complement</h4>
-                </a>
-              </li>
-              <li>
-                <a>
-                  <span className="icon is-small"><i className="fas fa-film" aria-hidden="true"></i></span>
-                  <h4 className="title is-4">triad</h4>
-                </a>
-              </li>
+
+              <li className="is-active"><a>monochrome</a></li>
+              <li><a>complement</a></li>
+              <li><a>triad</a></li>
             </ul>
-          </div> */}
+          </div>
+
           <div className="columns">
             <div className="column">
-              <h4 className="title is-4">monochrome</h4>
-              <div style={this.state}>
+              <div className="details-visible" style={this.state}>
                 <MonochromePalette chosenColor={this.state.backgroundColor} />
               </div>
             </div>
             <div className="column">
-              <h3 className="title is-4">complement</h3>
-              <div style={this.state}>
+              <div className="details-hidden" style={this.state}>
                 <ComplementPalette chosenColor={this.state.backgroundColor} />
               </div>
             </div>
 
             <div className="column">
-              <h3 className="title is-4">triad</h3>
-              <div style={this.state}>
+              <div className="details-hidden" style={this.state}>
                 <TriadPalette chosenColor={this.state.backgroundColor} />
               </div>
             </div>

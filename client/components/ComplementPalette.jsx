@@ -14,7 +14,8 @@ export default class ContrastPalette extends React.Component {
       },
       colorOne: null,
       colorTwo: null,
-      colorThree: null
+      colorThree: null,
+      isVisible: 'details-hidden'
     }
   }
 

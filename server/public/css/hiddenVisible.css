@@ -1,0 +1,7 @@
+.details-visible {
+  display: block;
+}
+
+.details-hidden {
+  display: none;
+}
