@@ -4,7 +4,7 @@ import ColorSquare from './ColorSquare'
 import { getTriad } from '../api'
 
 export default class MonochromePalette extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
       style: {
@@ -27,20 +27,19 @@ export default class MonochromePalette extends React.Component {
         colorTwo: data.body.colorTriadTwo,
         colorThree: data.body.colorTriadThree
       })
-      console.log(this.state)
     }
   }
 
-  componentDidMount() {
+  componentDidMount () {
     getTriad(this.callbackFn, this.props.chosenColor.slice(1))
   }
 
-  render() {
+  render () {
     return (
       <div className="section">
-          <div className="column"><ColorSquare chosenColor={this.props.chosenColor} nextColor={this.state.colorOne} /></div>
-          <div className="column"><ColorSquare chosenColor={this.props.chosenColor} nextColor={this.state.colorTwo} /></div>
-          <div className="column"><ColorSquare chosenColor={this.props.chosenColor} nextColor={this.state.colorThree} /></div>
+        <div className="column"><ColorSquare chosenColor={this.props.chosenColor} nextColor={this.state.colorOne} /></div>
+        <div className="column"><ColorSquare chosenColor={this.props.chosenColor} nextColor={this.state.colorTwo} /></div>
+        <div className="column"><ColorSquare chosenColor={this.props.chosenColor} nextColor={this.state.colorThree} /></div>
       </div>
     )
   }

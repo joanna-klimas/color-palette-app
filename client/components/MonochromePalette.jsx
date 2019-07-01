@@ -27,7 +27,6 @@ export default class MonochromePalette extends React.Component {
         colorTwo: data.body.colorTwo,
         colorThree: data.body.colorThree
       })
-      console.log(this.state)
     }
   }
 

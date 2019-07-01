@@ -4,7 +4,7 @@ import ColorSquare from './ColorSquare'
 import { getComplement } from '../api'
 
 export default class ContrastPalette extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
       style: {
@@ -27,22 +27,20 @@ export default class ContrastPalette extends React.Component {
         colorTwo: data.body.colorComplementTwo,
         colorThree: data.body.colorComplementThree
       })
-      console.log(this.state)
     }
   }
 
-  componentDidMount() {
+  componentDidMount () {
     getComplement(this.callbackFn, this.props.chosenColor.slice(1))
   }
 
-  render() {
+  render () {
     return (
-        <div className="section">
-          <div className="column"><ColorSquare chosenColor={this.props.chosenColor} nextColor={this.state.colorOne} /></div>
-          <div className="column"><ColorSquare chosenColor={this.props.chosenColor} nextColor={this.state.colorTwo} /></div>
-          <div className="column"><ColorSquare chosenColor={this.props.chosenColor} nextColor={this.state.colorThree} /></div>
-        </div>
+      <div className="section">
+        <div className="column"><ColorSquare chosenColor={this.props.chosenColor} nextColor={this.state.colorOne} /></div>
+        <div className="column"><ColorSquare chosenColor={this.props.chosenColor} nextColor={this.state.colorTwo} /></div>
+        <div className="column"><ColorSquare chosenColor={this.props.chosenColor} nextColor={this.state.colorThree} /></div>
+      </div>
     )
   }
 }
-

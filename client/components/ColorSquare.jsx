@@ -10,14 +10,14 @@ class Contrast extends React.Component {
     }
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate (prevProps) {
     if (this.props !== prevProps) {
       this.setState({
         backgroundColor: this.props.nextColor
       })
     }
   }
-  
+
   render () {
     return (
       <React.Fragment>

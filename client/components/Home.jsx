@@ -5,7 +5,7 @@ import ComplementPalette from './ComplementPalette'
 import TriadPalette from './TriadPalette'
 
 class Home extends React.Component {
-  constructor() {
+  constructor () {
     super()
 
     this.state = {
@@ -25,7 +25,7 @@ class Home extends React.Component {
     event.preventDefault()
   }
 
-  render() {
+  render () {
     return (
       <React.Fragment>
         <div className="box">
@@ -58,7 +58,7 @@ class Home extends React.Component {
 
           <button style={{ marginBottom: '2em' }} onClick={this.changeRandomColor} className="button is-light is-medium is-warning">feeling lucky?</button>
 
-          {/* 
+          {/*
           <div className="tabs is-toggle">
             <ul>
               <li className="is-active">
