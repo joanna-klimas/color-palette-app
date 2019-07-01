@@ -34,6 +34,12 @@ export default class ContrastPalette extends React.Component {
     getComplement(this.callbackFn, this.props.chosenColor.slice(1))
   }
 
+  componentDidUpdate (prevProps) {
+    if (this.props !== prevProps) {
+      getComplement(this.callbackFn, this.props.chosenColor.slice(1))
+    }
+  }
+
   render () {
     return (
       <div className="section">
