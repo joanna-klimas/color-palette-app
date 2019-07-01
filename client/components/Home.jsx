@@ -1,15 +1,16 @@
 import React from 'react'
-// import { Link } from 'react-router-dom'
 
 import MonochromePalette from './MonochromePalette'
+import ComplementPalette from './ComplementPalette'
+import TriadPalette from './TriadPalette'
 
 class Home extends React.Component {
-  constructor () {
+  constructor() {
     super()
 
     this.state = {
-      height: '500px',
-      width: '500px',
+      height: '350px',
+      width: '350px',
       backgroundColor: this.randomHexColor()
     }
   }
@@ -21,35 +22,29 @@ class Home extends React.Component {
     this.setState({
       backgroundColor: this.randomHexColor()
     })
+    event.preventDefault()
   }
 
-  render () {
+  render() {
     return (
       <React.Fragment>
         <div className="box">
-
-          <div className="columns">
-            <div className="column is-one-fifth">
-              <h1 className="title is-1">Unicorn</h1>
-            </div>
-            <div className="column is-one-fifth">
-              <img style={{ height: 80 }} src='/unicorn.jpg'></img>
-            </div>
-            <div className="column">
-            </div>
+          <div style={{ display: 'inline-flex' }}>
+            <img style={{ height: 80 }} src='/unicorn-01_300x.png'></img>
+            <h1 className="title is-1">unicorn</h1>
           </div>
-          <h2 className="title is-3">Pick a colour:</h2>
-
           <div className="columns">
-
-            <form>
-              <div className="column is-three-quarters">
+            <div className="column is-one-fifth">
+              <h2 className="title is-3">pick a colour:</h2>
+            </div>
+            <div className="column is-one-fifth">
+              <form>
                 <input
                   className="input"
                   type="text"
                   placeholder={this.state.backgroundColor}
                   name="userColor"
-                  onChange = {(e) => {
+                  onChange={(e) => {
                     const chosenColor = e.target.value
                     e.preventDefault()
                     this.setState({
@@ -57,18 +52,55 @@ class Home extends React.Component {
                     })
                   }}>
                 </input>
-              </div>
-              <div className="column">
-                <button onClick={this.changeRandomColor} className="button is-light is-medium is-warning">Feeling lucky?</button>
-              </div>
-            </form>
-
-          </div>
-          <div style={this.state}>
+              </form>
+            </div>
           </div>
 
-          <div className="column">
-            <MonochromePalette chosenColor={this.state.backgroundColor}/>
+          <button style={{ marginBottom: '2em' }} onClick={this.changeRandomColor} className="button is-light is-medium is-warning">feeling lucky?</button>
+
+          {/* 
+          <div className="tabs is-toggle">
+            <ul>
+              <li className="is-active">
+                <a>
+                  <span className="icon is-small"><i className="fas fa-image" aria-hidden="true"></i></span>
+                  <h4 className="title is-4">monochrome</h4>
+                </a>
+              </li>
+              <li>
+                <a>
+                  <span className="icon is-small"><i className="fas fa-music" aria-hidden="true"></i></span>
+                  <h4 className="title is-4">complement</h4>
+                </a>
+              </li>
+              <li>
+                <a>
+                  <span className="icon is-small"><i className="fas fa-film" aria-hidden="true"></i></span>
+                  <h4 className="title is-4">triad</h4>
+                </a>
+              </li>
+            </ul>
+          </div> */}
+          <div className="columns">
+            <div className="column">
+              <h4 className="title is-4">monochrome</h4>
+              <div style={this.state}>
+                <MonochromePalette chosenColor={this.state.backgroundColor} />
+              </div>
+            </div>
+            <div className="column">
+              <h3 className="title is-4">complement</h3>
+              <div style={this.state}>
+                <ComplementPalette chosenColor={this.state.backgroundColor} />
+              </div>
+            </div>
+
+            <div className="column">
+              <h3 className="title is-4">triad</h3>
+              <div style={this.state}>
+                <TriadPalette chosenColor={this.state.backgroundColor} />
+              </div>
+            </div>
           </div>
 
         </div>

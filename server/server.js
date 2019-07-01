@@ -1,26 +1,14 @@
-const api = require('../client/api.js')
 const path = require('path')
 const express = require('express')
-const cors = require('cors')
+const cors = require ('cors')
 
 //import { newMonochromePalette } from '../client/api.js'
 
 const server = express()
-//const router = express.Router()
+const router = require('./serverApi')
 
-server.use(express.json())
+server.use(cors())
 server.use(express.static(path.join(__dirname, './public')))
-server.use(cors('*'))
-
-server.get('/api', (req, res) => {
-  api.newMonochromePalette()
-    .then(data => {
-      console.log(data)
-      res.send(data)
-    })
-    .catch(err => {
-      res.status(500).send(err.message)
-    })
-})
+server.use('/', router)
 
 module.exports = server
