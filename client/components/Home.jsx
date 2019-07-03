@@ -20,14 +20,20 @@ class Home extends React.Component {
 
   changeRandomColor = () => {
     this.setState({
+      backgroundColor: ''
+    })
+    this.setState({
       backgroundColor: this.randomHexColor()
     })
     event.preventDefault()
   }
 
-  handleTabClick = (e) => {
-
-  }
+  changeColor = () => {
+    this.setState({
+      backgroundColor: ""
+    })
+    event.preventDefault()
+  }  
 
   render () {
     return (
@@ -35,7 +41,7 @@ class Home extends React.Component {
         <div className="box">
           <div style={{ display: 'inline-flex' }}>
             <img style={{ height: 80 }} src='/unicorn-01_300x.png'></img>
-            <h1 className="title is-1">unicorn</h1>
+            <h1 className="title is-1">the unicorn</h1>
           </div>
           <div className="columns">
             <div className="column is-one-fifth">
@@ -59,11 +65,7 @@ class Home extends React.Component {
               </form>
             </div>
             <div className="column is-one-fifth">
-              <a className="button is-medium is-warning">
-                <span className="icon is-medium">
-                  <i className="fas fa-sync-alt"></i>
-                </span>
-              </a>
+            <button style={{ marginBottom: '2em' }} onClick={this.changeColor} className="button is-light is-medium is-warning">update</button>
             </div>
           </div>
 
@@ -85,13 +87,13 @@ class Home extends React.Component {
               </div>
             </div>
             <div className="column">
-              <div className="details-hidden" style={this.state}>
+              <div className="details-visible" style={this.state}>
                 <ComplementPalette chosenColor={this.state.backgroundColor} />
               </div>
             </div>
 
             <div className="column">
-              <div className="details-hidden" style={this.state}>
+              <div className="details-visible" style={this.state}>
                 <TriadPalette chosenColor={this.state.backgroundColor} />
               </div>
             </div>
