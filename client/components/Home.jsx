@@ -11,7 +11,8 @@ class Home extends React.Component {
     this.state = {
       height: '350px',
       width: '350px',
-      backgroundColor: this.randomHexColor()
+      backgroundColor: this.randomHexColor(),
+      color: ''
     }
   }
 
@@ -19,9 +20,9 @@ class Home extends React.Component {
     `#${Math.floor(Math.random() * 0x1000000).toString(16).padStart(6, 0)}`
 
   changeRandomColor = () => {
-    this.setState({
-      backgroundColor: ''
-    })
+    // this.setState({
+    //   backgroundColor: null
+    // })
     this.setState({
       backgroundColor: this.randomHexColor()
     })
@@ -30,7 +31,7 @@ class Home extends React.Component {
 
   changeColor = () => {
     this.setState({
-      backgroundColor: ""
+      backgroundColor: this.state.color
     })
     event.preventDefault()
   }  
@@ -58,7 +59,7 @@ class Home extends React.Component {
                     const chosenColor = e.target.value
                     e.preventDefault()
                     this.setState({
-                      backgroundColor: chosenColor
+                      color: chosenColor
                     })
                   }}>
                 </input>
