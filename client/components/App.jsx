@@ -1,13 +1,20 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 import Home from './Home'
+import WaitIndicator from './WaitIndicator'
 
-const App = () => {
-  return (
-    <div className="container">
+const App = ({ pending }) => {
+  return !pending ? <WaitIndicator />
+    : <div className="container">
       <Home/>
     </div>
-  )
 }
 
-export default App
+const mapStateToProps = (state) => {
+  return ({
+    pending: state.pageInfo.pending
+  })
+}
+
+export default connect(mapStateToProps)(App)
