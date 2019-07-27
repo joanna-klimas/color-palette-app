@@ -1,24 +1,28 @@
 import React, { useState } from 'react'
+import { connect } from 'react-redux'
 
 import MonochromePalette from './MonochromePalette'
 import ComplementPalette from './ComplementPalette'
 import TriadPalette from './TriadPalette'
+import { setBaseColor } from '../actions/baseColor'
 
-const Home = () => {
+const Home = ( {dispatch, baseColor} ) => {
 
   function randomHexColor() {
     return `#${Math.floor(Math.random() * 0x1000000).toString(16).padStart(6, 0)}`
   }
 
-  const [bgColor, setBackgroundColor] = useState('pink')
+  const [bgColor, setBackgroundColor] = useState(baseColor)
   const [color, setColor] = useState('')
 
   function changeRandomColor() {
     setBackgroundColor(randomHexColor())
+    dispatch(setBaseColor(bgColor))
   }
 
   function changeColor() {
     setBackgroundColor(color)
+    dispatch(setBaseColor(bgColor))
   }
 
   return (
@@ -36,7 +40,7 @@ const Home = () => {
             <input
               className="input"
               type="text"
-              placeholder={'example string'}
+              placeholder={baseColor}
               name="userColor"
               onChange={(e) => {
                 setColor(e.target.value)
@@ -50,14 +54,12 @@ const Home = () => {
       </div>
 
       <button style={{ marginBottom: '2em' }} onClick={changeRandomColor} className="button is-light is-medium is-warning">feeling lucky?</button>
-
-      <div className="tabs is-medium">
-        <ul>
-          <li className="is-active"><a>monochrome</a></li>
-          <li><a>complement</a></li>
-          <li><a>triad</a></li>
-        </ul>
-      </div>
+      
+      <ul>
+        <li><a>monochrome</a></li>
+        <li><a>complement</a></li>
+        <li><a>triad</a></li>
+      </ul>
 
       <div className="columns">
         <div className="column">
@@ -81,4 +83,10 @@ const Home = () => {
   )
 }
 
-export default Home
+const mapStateToProps = (state) => {
+  return {
+    baseColor: state.baseColor
+  }
+}
+
+export default connect(mapStateToProps)(Home)
