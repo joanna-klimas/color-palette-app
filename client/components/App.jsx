@@ -5,7 +5,7 @@ import Home from './Home'
 import WaitIndicator from './WaitIndicator'
 
 const App = ({ pending }) => {
-  return !pending ? <WaitIndicator />
+  return pending ? <WaitIndicator />
     : <div className="container">
       <Home/>
     </div>
