@@ -5,8 +5,9 @@ import MonochromePalette from './MonochromePalette'
 import ComplementPalette from './ComplementPalette'
 import TriadPalette from './TriadPalette'
 import { setBaseColor } from '../actions/baseColor'
+import { setPending } from '../actions/pageInfo'
 
-const Home = ( {dispatch, baseColor} ) => {
+const Home = ( {dispatch, baseColor, pending} ) => {
 
   function randomHexColor() {
     return `#${Math.floor(Math.random() * 0x1000000).toString(16).padStart(6, 0)}`
@@ -14,6 +15,10 @@ const Home = ( {dispatch, baseColor} ) => {
 
   const [bgColor, setBackgroundColor] = useState(baseColor)
   const [color, setColor] = useState('')
+
+  useEffect(() => {
+    dispatch(setPending(false))
+  }, [dispatch, pending])
 
   function changeRandomColor() {
     setBackgroundColor(randomHexColor())
@@ -85,7 +90,8 @@ const Home = ( {dispatch, baseColor} ) => {
 
 const mapStateToProps = (state) => {
   return {
-    baseColor: state.baseColor
+    baseColor: state.baseColor,
+    pending: state.pageInfo.pending
   }
 }
 

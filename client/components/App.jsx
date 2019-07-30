@@ -5,10 +5,12 @@ import Home from './Home'
 import WaitIndicator from './WaitIndicator'
 
 const App = ({ pending }) => {
-  return pending ? <WaitIndicator />
-    : <div className="container">
+  return (
+    <>
       <Home/>
-    </div>
+      {pending && <WaitIndicator />}
+    </>
+  )
 }
 
 const mapStateToProps = (state) => {

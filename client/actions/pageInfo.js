@@ -1,10 +1,10 @@
 export const PENDING = 'PENDING'
 
-export function setPending (pending) {
+export function setPending (boolean) {
   return {
     type: PENDING,
     pageInfo: {
-      pending
+      pending: boolean
     }
   }
 }

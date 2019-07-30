@@ -1,11 +1,11 @@
 import { PENDING } from '../actions/pageInfo'
 
-const initialState = true
+const initialState = {pending: true}
 
 const setPending = (state = initialState, action) => {
   switch (action.type) {
     case PENDING:
-      return action.pageInfo.pending 
+      return action.pageInfo
     default:
       return state
   }
