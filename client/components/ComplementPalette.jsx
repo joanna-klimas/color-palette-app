@@ -1,53 +1,35 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 import ColorSquare from './ColorSquare'
 import { getComplement } from '../api'
 
-export default class ContrastPalette extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      style: {
-        height: 120,
-        width: 120,
-        backgroundColor: this.props.chosenColor
-      },
-      colorOne: null,
-      colorTwo: null,
-      colorThree: null,
-      isVisible: 'details-hidden'
-    }
-  }
+const ContrastPalette = ({ chosenColor }) => {
 
-  callbackFn = (err, data) => {
+  const [colorOne, setColorOne] = useState(null)
+  const [colorTwo, setColorTwo] = useState(null)
+  const [colorThree, setColorThree] = useState(null)
+
+  const callbackFn = (err, data) => {
     if (err) {
       console.log(err)
     } else {
-      this.setState({
-        colorOne: data.body.colorComplementOne,
-        colorTwo: data.body.colorComplementTwo,
-        colorThree: data.body.colorComplementThree
-      })
+      setColorOne(data.body.colorComplementOne)
+      setColorTwo(data.body.colorComplementTwo)
+      setColorThree(data.body.colorComplementThree)
     }
   }
 
-  componentDidMount () {
-    getComplement(this.callbackFn, this.props.chosenColor.slice(1))
-  }
+  useEffect(() => {
+    getComplement(callbackFn, chosenColor.slice(1))
+  }, chosenColor)
 
-  componentDidUpdate (prevProps) {
-    if (this.props !== prevProps) {
-      getComplement(this.callbackFn, this.props.chosenColor.slice(1))
-    }
-  }
-
-  render () {
-    return (
-      <div className="section">
-        <div className="column"><ColorSquare chosenColor={this.props.chosenColor} nextColor={this.state.colorOne} /></div>
-        <div className="column"><ColorSquare chosenColor={this.props.chosenColor} nextColor={this.state.colorTwo} /></div>
-        <div className="column"><ColorSquare chosenColor={this.props.chosenColor} nextColor={this.state.colorThree} /></div>
-      </div>
-    )
-  }
+  return (
+    <div className="section">
+      <div className="column"><ColorSquare chosenColor={chosenColor} nextColor={colorOne} /></div>
+      <div className="column"><ColorSquare chosenColor={chosenColor} nextColor={colorTwo} /></div>
+      <div className="column"><ColorSquare chosenColor={chosenColor} nextColor={colorThree} /></div>
+    </div>
+  )
 }
+
+export default ContrastPalette
