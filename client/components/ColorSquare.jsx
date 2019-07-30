@@ -1,31 +1,16 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
-class Contrast extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      height: 60,
-      width: 60,
-      backgroundColor: 'transparent'
-    }
-  }
+const Contrast = ({ nextColor }) => {
+  const [backgroundColor, setBackgroundColor] = useState('transparent')
 
-  componentDidUpdate (prevProps) {
-    if (this.props !== prevProps) {
-      this.setState({
-        backgroundColor: this.props.nextColor
-      })
-    }
-  }
+  useEffect(() => {
+    setBackgroundColor(nextColor)
+  }, [nextColor])
 
-  render () {
-    return (
-      <React.Fragment>
-        <div style={this.state}>
-        </div>
-      </React.Fragment>
-    )
-  }
+  return (
+      <div style={{height: 60, width: 60, backgroundColor: backgroundColor}}>
+      </div>
+  )
 }
 
 export default Contrast

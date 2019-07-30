@@ -1,53 +1,35 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 import ColorSquare from './ColorSquare'
 import { getTriad } from '../api'
 
-export default class MonochromePalette extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      style: {
-        height: 120,
-        width: 120,
-        backgroundColor: this.props.chosenColor
-      },
-      colorOne: null,
-      colorTwo: null,
-      colorThree: null,
-      isVisible: 'details-hidden'
-    }
-  }
+const TriadPalette = ({ chosenColor }) => {
 
-  callbackFn = (err, data) => {
+  const [colorOne, setColorOne] = useState(null)
+  const [colorTwo, setColorTwo] = useState(null)
+  const [colorThree, setColorThree] = useState(null)
+
+  const callbackFn = (err, data) => {
     if (err) {
       console.log(err)
     } else {
-      this.setState({
-        colorOne: data.body.colorTriadOne,
-        colorTwo: data.body.colorTriadTwo,
-        colorThree: data.body.colorTriadThree
-      })
+      setColorOne(data.body.colorTriadOne)
+      setColorTwo(data.body.colorTriadTwo)
+      setColorThree(data.body.colorTriadThree)
     }
   }
 
-  componentDidMount () {
-    getTriad(this.callbackFn, this.props.chosenColor.slice(1))
-  }
+  useEffect(() => {
+    getTriad(callbackFn, chosenColor.slice(1))
+  }, chosenColor)
 
-  componentDidUpdate (prevProps) {
-    if (this.props !== prevProps) {
-      getTriad(this.callbackFn, this.props.chosenColor.slice(1))
-    }
-  }
-
-  render () {
-    return (
-      <div className="section">
-        <div className="column"><ColorSquare chosenColor={this.props.chosenColor} nextColor={this.state.colorOne} /></div>
-        <div className="column"><ColorSquare chosenColor={this.props.chosenColor} nextColor={this.state.colorTwo} /></div>
-        <div className="column"><ColorSquare chosenColor={this.props.chosenColor} nextColor={this.state.colorThree} /></div>
-      </div>
-    )
-  }
+  return (
+    <div className="section">
+      <div className="column"><ColorSquare chosenColor={chosenColor} nextColor={colorOne} /></div>
+      <div className="column"><ColorSquare chosenColor={chosenColor} nextColor={colorTwo} /></div>
+      <div className="column"><ColorSquare chosenColor={chosenColor} nextColor={colorThree} /></div>
+    </div>
+  )
 }
+
+export default TriadPalette
