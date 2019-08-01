@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
+import { Container, Grid, Typography, TextField, Button, AppBar, Tabs, Tab, Box } from '@material-ui/core'
 
 import MonochromePalette from './MonochromePalette'
 import ComplementPalette from './ComplementPalette'
 import TriadPalette from './TriadPalette'
 import { setBaseColor } from '../actions/baseColor'
 import { setPending } from '../actions/pageInfo'
+import { HomeStyles } from '../styles/muiStyles'
 
 const Home = ( {dispatch, baseColor, pending} ) => {
+  const classes = HomeStyles()
 
   function randomHexColor() {
     return `#${Math.floor(Math.random() * 0x1000000).toString(16).padStart(6, 0)}`
@@ -15,76 +18,98 @@ const Home = ( {dispatch, baseColor, pending} ) => {
 
   const [bgColor, setBackgroundColor] = useState(baseColor)
   const [color, setColor] = useState('')
+  const [paletteType, setPaletteType] = useState('monochrome')
 
   useEffect(() => {
     dispatch(setPending(false))
   }, [dispatch, pending])
 
-  function changeRandomColor() {
+  const changeRandomColor = () => {
     setBackgroundColor(randomHexColor())
     dispatch(setBaseColor(bgColor))
   }
 
-  function changeColor() {
+  const changeColor = () => {
     setBackgroundColor(color)
     dispatch(setBaseColor(bgColor))
   }
 
+  const sliderValue = () =>{
+    if (paletteType === 'monochrome') return 0
+    else if (paletteType === 'complement') return 1
+    else if(paletteType === 'triad') return 2
+  }
+
+  const tabPanel = (paletteType) => {
+    if (paletteType === 'monochrome') {
+      return (
+        <div className={classes.paletteSquare} style={{ height: 350, width: 350, backgroundColor: bgColor }}>
+          <MonochromePalette chosenColor={bgColor} />
+        </div>
+      )
+    } else if (paletteType === 'complement') {
+      return (
+        <div className={classes.paletteSquare} style={{ height: 350, width: 350, backgroundColor: bgColor }}>
+          <ComplementPalette chosenColor={bgColor} />
+        </div>
+      )
+    } else if (paletteType === 'triad') {
+      return (
+        <div className={classes.paletteSquare} style={{ height: 350, width: 350, backgroundColor: bgColor }}>
+          <TriadPalette chosenColor={bgColor} />
+        </div>
+      )
+    }
+  }
+
   return (
-    <div className="box">
-      <div style={{ display: 'inline-flex' }}>
-        <img style={{ height: 80 }} src='/unicorn-01_300x.png'></img>
-        <h1 className="title is-1">the unicorn</h1>
-      </div>
-      <div className="columns">
-        <div className="column is-one-fifth">
-          <h2 className="title is-3">pick a colour:</h2>
-        </div>
-        <div className="column is-one-fifth">
-          <form>
-            <input
-              className="input"
-              type="text"
-              placeholder={baseColor}
-              name="userColor"
-              onChange={(e) => {
-                setColor(e.target.value)
-              }}>
-            </input>
+    <Container>
+      <Grid container  className={classes.grid} spacing={1}>
+        <Grid item xs={12}>
+          <img style={{ height: 80 }} src='/unicorn-01_300x.png'></img>
+          <Typography variant="h3" component="h2" gutterBottom>the unicorn</Typography>
+        </Grid>
+        <Grid item xs={2}>
+          <form className={classes.input}>
+            <TextField
+              id="user input"
+              label="pick a colour"
+              value={color}
+              onChange={(e) => setColor(e.target.value)}
+              variant="outlined"
+              placeholder={'#ffffff'}
+            >
+            </TextField>
           </form>
-        </div>
-        <div className="column is-one-fifth">
-          <button style={{ marginBottom: '2em' }} onClick={changeColor} className="button is-light is-medium is-warning">update</button>
-        </div>
-      </div>
+        </Grid>
+        <Grid item xs={1}>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={changeColor}
+          >update</Button>
+        </Grid>
+        <Grid item xs={2}>
+        <Button
+            variant="contained"
+            color="primary"
+            onClick={changeRandomColor}
+          >feeling lucky?</Button>
+        </Grid>
+        <Grid item xs={7}></Grid>
+      </Grid>
 
-      <button style={{ marginBottom: '2em' }} onClick={changeRandomColor} className="button is-light is-medium is-warning">feeling lucky?</button>
-      
-      <ul>
-        <li><a>monochrome</a></li>
-        <li><a>complement</a></li>
-        <li><a>triad</a></li>
-      </ul>
-
-      <div className="columns">
-        <div className="column">
-          <div className="details-visible" style={{ height: 350, width: 350, backgroundColor: bgColor }}>
-            <MonochromePalette chosenColor={bgColor} />
-          </div>
-        </div>
-        <div className="column">
-          <div className="details-visible" style={{ height: 350, width: 350, backgroundColor: bgColor }}>
-            <ComplementPalette chosenColor={bgColor} />
-          </div>
-        </div>
-
-        <div className="column">
-          <div className="details-visible" style={{ height: 350, width: 350, backgroundColor: bgColor }}>
-            <TriadPalette chosenColor={bgColor} />
-          </div>
-        </div>
-      </div>
-    </div>
+      <AppBar position="static" className={classes.tabBar}>
+        <Tabs value={sliderValue()}>
+          <Tab label="monochrome" onClick={() => setPaletteType('monochrome')} />
+          <Tab label="complement" onClick={() => setPaletteType('complement')}/>
+          <Tab label="triad" onClick={() => setPaletteType('triad')}/>
+        </Tabs>
+      </AppBar>
+      <Box className={classes.paletteSquareBox}>
+        {tabPanel(paletteType)}
+      </Box>  
+    </Container>
   )
 }
 
