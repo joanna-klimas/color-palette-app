@@ -98,7 +98,7 @@ const Home = ( {dispatch, baseColor, pending} ) => {
       </Grid>
 
       <AppBar position="static">
-        <Tabs value={() => sliderValue}>
+        <Tabs value={sliderValue()}>
           <Tab label="monochrome" onClick={() => setPaletteType('monochrome')} />
           <Tab label="complement" onClick={() => setPaletteType('complement')}/>
           <Tab label="triad" onClick={() => setPaletteType('triad')}/>
