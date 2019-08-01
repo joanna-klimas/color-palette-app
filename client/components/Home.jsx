@@ -32,6 +32,12 @@ const Home = ( {dispatch, baseColor, pending} ) => {
     dispatch(setBaseColor(bgColor))
   }
 
+  const sliderValue = () =>{
+    if (paletteType === 'monochrome') return 0
+    else if (paletteType === 'complement') return 1
+    else if(paletteType === 'triad') return 2
+  }
+
   const tabPanel = (paletteType) => {
     if (paletteType === 'monochrome') {
       return (
@@ -92,7 +98,7 @@ const Home = ( {dispatch, baseColor, pending} ) => {
       </Grid>
 
       <AppBar position="static">
-        <Tabs value={0}>
+        <Tabs value={() => sliderValue}>
           <Tab label="monochrome" onClick={() => setPaletteType('monochrome')} />
           <Tab label="complement" onClick={() => setPaletteType('complement')}/>
           <Tab label="triad" onClick={() => setPaletteType('triad')}/>
