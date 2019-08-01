@@ -1,17 +1,19 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { CssBaseline } from '@material-ui/core'
+import { ThemeProvider } from '@material-ui/styles'
 
+import {theme } from '../styles/muiStyles'
 import Home from './Home'
 import WaitIndicator from './WaitIndicator'
 
 const App = ({ pending }) => {
   return (
-    <>
+    <ThemeProvider theme={theme}> 
       <CssBaseline />
       <Home/>
       {pending && <WaitIndicator />}
-    </>
+    </ThemeProvider>
   )
 }
 

@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-import { Container, Grid, Typography, TextField, Button, AppBar, Tabs, Tab } from '@material-ui/core'
+import { Container, Grid, Typography, TextField, Button, AppBar, Tabs, Tab, Box } from '@material-ui/core'
 
 import MonochromePalette from './MonochromePalette'
 import ComplementPalette from './ComplementPalette'
 import TriadPalette from './TriadPalette'
 import { setBaseColor } from '../actions/baseColor'
 import { setPending } from '../actions/pageInfo'
+import { HomeStyles } from '../styles/muiStyles'
 
 const Home = ( {dispatch, baseColor, pending} ) => {
+  const classes = HomeStyles()
 
   function randomHexColor() {
     return `#${Math.floor(Math.random() * 0x1000000).toString(16).padStart(6, 0)}`
@@ -41,19 +43,19 @@ const Home = ( {dispatch, baseColor, pending} ) => {
   const tabPanel = (paletteType) => {
     if (paletteType === 'monochrome') {
       return (
-        <div className="details-visible" style={{ height: 350, width: 350, backgroundColor: bgColor }}>
+        <div className={classes.paletteSquare} style={{ height: 350, width: 350, backgroundColor: bgColor }}>
           <MonochromePalette chosenColor={bgColor} />
         </div>
       )
     } else if (paletteType === 'complement') {
       return (
-        <div className="details-visible" style={{ height: 350, width: 350, backgroundColor: bgColor }}>
+        <div className={classes.paletteSquare} style={{ height: 350, width: 350, backgroundColor: bgColor }}>
           <ComplementPalette chosenColor={bgColor} />
         </div>
       )
     } else if (paletteType === 'triad') {
       return (
-        <div className="details-visible" style={{ height: 350, width: 350, backgroundColor: bgColor }}>
+        <div className={classes.paletteSquare} style={{ height: 350, width: 350, backgroundColor: bgColor }}>
           <TriadPalette chosenColor={bgColor} />
         </div>
       )
@@ -62,13 +64,13 @@ const Home = ( {dispatch, baseColor, pending} ) => {
 
   return (
     <Container>
-      <Grid container spacing={1}>
+      <Grid container  className={classes.grid} spacing={1}>
         <Grid item xs={12}>
           <img style={{ height: 80 }} src='/unicorn-01_300x.png'></img>
           <Typography variant="h3" component="h2" gutterBottom>the unicorn</Typography>
         </Grid>
         <Grid item xs={2}>
-          <form>
+          <form className={classes.input}>
             <TextField
               id="user input"
               label="pick a colour"
@@ -97,14 +99,16 @@ const Home = ( {dispatch, baseColor, pending} ) => {
         <Grid item xs={7}></Grid>
       </Grid>
 
-      <AppBar position="static">
+      <AppBar position="static" className={classes.tabBar}>
         <Tabs value={sliderValue()}>
           <Tab label="monochrome" onClick={() => setPaletteType('monochrome')} />
           <Tab label="complement" onClick={() => setPaletteType('complement')}/>
           <Tab label="triad" onClick={() => setPaletteType('triad')}/>
         </Tabs>
       </AppBar>
-      {tabPanel(paletteType)}
+      <Box className={classes.paletteSquareBox}>
+        {tabPanel(paletteType)}
+      </Box>  
     </Container>
   )
 }
