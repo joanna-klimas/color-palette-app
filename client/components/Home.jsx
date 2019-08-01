@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-import { Container, Grid, Typography, TextField, Button } from '@material-ui/core'
+import { Container, Grid, Typography, TextField, Button, AppBar, Tabs, Tab } from '@material-ui/core'
 
 import MonochromePalette from './MonochromePalette'
 import ComplementPalette from './ComplementPalette'
@@ -16,6 +16,7 @@ const Home = ( {dispatch, baseColor, pending} ) => {
 
   const [bgColor, setBackgroundColor] = useState(baseColor)
   const [color, setColor] = useState('')
+  const [paletteType, setPaletteType] = useState('monochrome')
 
   useEffect(() => {
     dispatch(setPending(false))
@@ -29,6 +30,28 @@ const Home = ( {dispatch, baseColor, pending} ) => {
   const changeColor = () => {
     setBackgroundColor(color)
     dispatch(setBaseColor(bgColor))
+  }
+
+  const tabPanel = (paletteType) => {
+    if (paletteType === 'monochrome') {
+      return (
+        <div className="details-visible" style={{ height: 350, width: 350, backgroundColor: bgColor }}>
+          <MonochromePalette chosenColor={bgColor} />
+        </div>
+      )
+    } else if (paletteType === 'complement') {
+      return (
+        <div className="details-visible" style={{ height: 350, width: 350, backgroundColor: bgColor }}>
+          <ComplementPalette chosenColor={bgColor} />
+        </div>
+      )
+    } else if (paletteType === 'triad') {
+      return (
+        <div className="details-visible" style={{ height: 350, width: 350, backgroundColor: bgColor }}>
+          <TriadPalette chosenColor={bgColor} />
+        </div>
+      )
+    }
   }
 
   return (
@@ -68,24 +91,14 @@ const Home = ( {dispatch, baseColor, pending} ) => {
         <Grid item xs={7}></Grid>
       </Grid>
 
-      <div className="columns">
-        <div className="column">
-          <div className="details-visible" style={{ height: 350, width: 350, backgroundColor: bgColor }}>
-            <MonochromePalette chosenColor={bgColor} />
-          </div>
-        </div>
-        <div className="column">
-          <div className="details-visible" style={{ height: 350, width: 350, backgroundColor: bgColor }}>
-            <ComplementPalette chosenColor={bgColor} />
-          </div>
-        </div>
-
-        <div className="column">
-          <div className="details-visible" style={{ height: 350, width: 350, backgroundColor: bgColor }}>
-            <TriadPalette chosenColor={bgColor} />
-          </div>
-        </div>
-      </div>
+      <AppBar position="static">
+        <Tabs value={0}>
+          <Tab label="monochrome" onClick={() => setPaletteType('monochrome')} />
+          <Tab label="complement" onClick={() => setPaletteType('complement')}/>
+          <Tab label="triad" onClick={() => setPaletteType('triad')}/>
+        </Tabs>
+      </AppBar>
+      {tabPanel(paletteType)}
     </Container>
   )
 }
