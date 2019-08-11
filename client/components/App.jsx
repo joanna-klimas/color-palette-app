@@ -6,7 +6,8 @@ import { ThemeProvider } from '@material-ui/styles'
 import {theme } from '../styles/muiStyles'
 import Home from './Home'
 import Navbar from './Navbar'
-import WaitIndicator from './WaitIndicator'
+import Footer from './Footer'
+// import WaitIndicator from './WaitIndicator'
 
 const App = ({ pending }) => {
   return (
@@ -14,7 +15,7 @@ const App = ({ pending }) => {
       <CssBaseline />
       <Navbar />
       <Home/>
-      {pending && <WaitIndicator />}
+      <Footer/>
     </ThemeProvider>
   )
 }

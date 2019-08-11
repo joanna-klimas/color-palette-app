@@ -63,7 +63,7 @@ const Home = ( {dispatch, baseColor, pending} ) => {
   }
 
   return (
-    <Container>
+    <Container className={classes.container}>
       <Grid container  className={classes.grid} spacing={1}>
         <Grid item xs={2}>
           <form className={classes.input}>
