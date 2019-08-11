@@ -36,5 +36,34 @@ export const HomeStyles = makeStyles(theme => ({
   },
   tabBar: {
     width: '450px'
+  },
+  container: {
+    marginBottom: '50px'
+  }
+}))
+
+export const NavbarStyles = makeStyles(theme => ({
+  navbar: {
+    marginBottom: '30px'
+  },
+  button: {
+    marginLeft: '1300px',
+    position: 'absolute'
+  }
+}))
+
+export const FooterStyles = makeStyles(theme => ({
+  footer: {
+    backgroundColor: theme.palette.primary.main,
+    height: '120px'
+  },
+  icons: {
+    display: 'block',
+    margin: 'auto'
+  },
+  text: {
+    textAlign: 'center',
+    marginBottom: '15px',
+    paddingTop: '20px'
   }
 }))
