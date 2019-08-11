@@ -55,6 +55,15 @@ export const NavbarStyles = makeStyles(theme => ({
 export const FooterStyles = makeStyles(theme => ({
   footer: {
     backgroundColor: theme.palette.primary.main,
-    height: '170px'
+    height: '120px'
+  },
+  icons: {
+    display: 'block',
+    margin: 'auto'
+  },
+  text: {
+    textAlign: 'center',
+    marginBottom: '15px',
+    paddingTop: '20px'
   }
 }))
