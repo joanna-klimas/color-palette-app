@@ -38,3 +38,13 @@ export const HomeStyles = makeStyles(theme => ({
     width: '450px'
   }
 }))
+
+export const NavbarStyles = makeStyles(theme => ({
+  navbar: {
+    marginBottom: '30px'
+  },
+  button: {
+    marginLeft: '1300px',
+    position: 'absolute'
+  }
+}))

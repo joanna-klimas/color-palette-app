@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-import { Container, Grid, Typography, TextField, Button, AppBar, Tabs, Tab, Box } from '@material-ui/core'
+import { Container, Grid, TextField, Button, AppBar, Tabs, Tab, Box } from '@material-ui/core'
 
 import MonochromePalette from './MonochromePalette'
 import ComplementPalette from './ComplementPalette'
@@ -65,10 +65,6 @@ const Home = ( {dispatch, baseColor, pending} ) => {
   return (
     <Container>
       <Grid container  className={classes.grid} spacing={1}>
-        <Grid item xs={12}>
-          <img style={{ height: 80 }} src='/unicorn-01_300x.png'></img>
-          <Typography variant="h3" component="h2" gutterBottom>the unicorn</Typography>
-        </Grid>
         <Grid item xs={2}>
           <form className={classes.input}>
             <TextField
